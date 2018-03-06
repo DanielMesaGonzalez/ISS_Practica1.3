@@ -7,6 +7,7 @@
 <title>Registro</title>
 </head>
 <body>
+<h1>REGISTRO</h1>
 <form action="http://localhost:8080/Practica_1_3/Registro" method=post>
 Name: <input type=text name=username>
 Surname: <input type=text name=surname>

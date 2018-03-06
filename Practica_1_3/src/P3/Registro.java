@@ -29,8 +29,15 @@ public class Registro extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-	String url="/WEB-INF/sesion.jsp";
-	getServletContext().getRequestDispatcher(url).forward(request, response);
+	
+	if(request.getSession(false)==null) {
+		
+    	String url="/WEB-INF/caduca.html";
+		getServletContext().getRequestDispatcher(url).forward(request, response);
+
+		
+    }
+
 	}
 
 	/**
@@ -38,12 +45,24 @@ public class Registro extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesion = request.getSession(true);
-	    String nombre= (String)request.getAttribute("username");
-	    String apellido= (String)request.getAttribute("surname");
-	    String email= (String)request.getAttribute("email");
+	    String nombre= (String)request.getParameter("username");
+	    String apellido= (String)request.getParameter("surname");
+	    String email= (String)request.getParameter("email");
 	    UsuariosDAO user=new UsuariosDAO(nombre, apellido, email);
-	    sesion.setAttribute("nUsuario", user);
-	    doGet(request, response);
+	    request.setAttribute("nombre", nombre); 
+	    sesion.setAttribute("nombre", nombre);
+	    request.setAttribute("apellido", apellido);
+	    sesion.setAttribute("apellido", apellido);
+	    request.setAttribute("email", email); 
+	    sesion.setAttribute("email", email); 
+	    
+	    
+	    sesion.setMaxInactiveInterval(5);
+	    
+	    String url="/WEB-INF/sesion.jsp";
+		getServletContext().getRequestDispatcher(url).forward(request, response);
+		
+		doGet(request,response);
 	}
 
 }

@@ -8,11 +8,18 @@
 <title>Sesion</title>
 </head>
 <body>
-Username : ${sessionScope.nUsuario}
-Username from session:<st:out value="${sessionScope.nUsuario}"/>
-<jsp:useBean id="nUsuario" scope="session" class="P3.UsuariosDAO"></jsp:useBean>
-<p>El nombre es <jsp:getProperty  property="nombre" name="nUsuario"/></p>
-<p>El apellido es <jsp:getProperty  property="apellidos" name="nUsuario"/></p>
-<p>El email es <jsp:getProperty  property="email" name="nUsuario"/></p>
+<h1>Datos de Usuario</h1>
+<table>
+<tr style="background:#BDBDBD">
+<th> Nombre </th>
+<th> Apellidos </th>
+<th> Email </th>
+</tr>
+<tr style="background:#01A9DB">
+<td>${nombre}</td>
+<td>${apellido}</td>
+<td>${email}</td>
+</tr>
+</table>
 </body>
 </html>
