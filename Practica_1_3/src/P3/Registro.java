@@ -30,13 +30,13 @@ public class Registro extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	
-	if(request.getSession(false)==null) {
-		
-    	String url="/WEB-INF/caduca.html";
-		getServletContext().getRequestDispatcher(url).forward(request, response);
+		if(request.getSession(false)==null) {
+			
+	    	String url="/WEB-INF/caduca.html";
+			getServletContext().getRequestDispatcher(url).forward(request, response);
 
-		
-    }
+			
+	    }
 
 	}
 
@@ -55,12 +55,12 @@ public class Registro extends HttpServlet {
 	    sesion.setAttribute("apellido", apellido);
 	    request.setAttribute("email", email); 
 	    sesion.setAttribute("email", email); 
-	    
-	    
 	    sesion.setMaxInactiveInterval(5);
 	    
 	    String url="/WEB-INF/sesion.jsp";
 		getServletContext().getRequestDispatcher(url).forward(request, response);
+		
+
 		
 		doGet(request,response);
 	}
