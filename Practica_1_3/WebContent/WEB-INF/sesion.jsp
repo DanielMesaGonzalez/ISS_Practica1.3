@@ -16,9 +16,9 @@
 <th> Email </th>
 </tr>
 <tr style="background:#01A9DB">
-<td>${nombre}</td>
-<td>${apellido}</td>
-<td>${email}</td>
+<td>${user.nombre}</td>
+<td>${user.apellidos}</td>
+<td>${user.email}</td>
 </tr>
 </table>
 </body>
