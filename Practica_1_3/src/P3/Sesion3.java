@@ -31,10 +31,10 @@ public class Sesion3 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		ArrayList<UsuariosDAO> usuarios = new ArrayList<UsuariosDAO>();
-		UsuariosDAO user1= new UsuariosDAO("Diego","Ortega","doc_95@hotmail.com");
-		UsuariosDAO user2= new UsuariosDAO("Antonio","Trujillo","atd@hotmail.com");
-		UsuariosDAO user3= new UsuariosDAO("Salvador","Trujillo","std@hotmail.com");
+		ArrayList<UsuariosDTO> usuarios = new ArrayList<UsuariosDTO>();
+		UsuariosDTO user1= new UsuariosDTO("Diego","Ortega","doc_95@hotmail.com");
+		UsuariosDTO user2= new UsuariosDTO("Antonio","Trujillo","atd@hotmail.com");
+		UsuariosDTO user3= new UsuariosDTO("Salvador","Trujillo","std@hotmail.com");
 		usuarios.add(user1);
 		usuarios.add(user2);
 		usuarios.add(user3);
@@ -50,7 +50,7 @@ public class Sesion3 extends HttpServlet {
 		String usuario=request.getParameter("usuario");
 		String passwd=request.getParameter("clave");
 		String url="";
-		UsuariosDAO db= new UsuariosDAO();
+		UsuariosDTO db= new UsuariosDTO();
 		if(db.checkAdmin(usuario,passwd)) {
 			doGet(request, response);
 			url="/WEB-INF/admin.jsp";

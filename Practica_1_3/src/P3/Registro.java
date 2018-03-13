@@ -31,9 +31,9 @@ public class Registro extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 	
-		if(request.getSession(false)==null) {
+		if(request.getSession()==null) {
 			
-	    	String url="/WEB-INF/caduca.html";
+	    	String url="/WebContent/caduca.html";
 			getServletContext().getRequestDispatcher(url).forward(request, response);
 
 			
@@ -49,16 +49,16 @@ public class Registro extends HttpServlet {
 	    String nombre= (String)request.getParameter("username");
 	    String apellido= (String)request.getParameter("surname");
 	    String email= (String)request.getParameter("email");
-	    UsuariosDAO user=new UsuariosDAO(nombre, apellido, email);
+	    UsuariosDTO user=new UsuariosDTO(nombre, apellido, email);
 	    request.setAttribute("user", user); 
 	    sesion.setAttribute("user", user);
+	    
 	    sesion.setMaxInactiveInterval(5);
 		
 	    String url="/WEB-INF/sesion.jsp";
 		getServletContext().getRequestDispatcher(url).forward(request, response);
+		doGet(request, response);
 		
-
-		doGet(request,response);
-	}
+		}
 
 }
